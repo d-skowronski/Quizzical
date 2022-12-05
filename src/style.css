@@ -36,11 +36,22 @@ button {
     border: 0.05em solid #4D5B9E;
 }
 
-.answerButton:hover, .answerSelected {
+.buttonActive:hover, .answerSelected {
     background: #D6DBF5;
 }
 
+.buttonInactive {
+    opacity: 0.5;
+}
 
+.buttonCorrect {
+    background: #94D7A2;
+}
+
+.buttonIncorrect {
+    opacity: 0.5;
+    background: #F8BCBC;
+}
 
 .actionButton {
     border: none;

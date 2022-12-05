@@ -6,6 +6,8 @@ import { nanoid } from 'nanoid'
 
 export default function Quiz(props) {
     const [questions, setQuestions] = useState([])
+    const [answersSeen, setAnswersSeen] = useState(false)
+
     useEffect(() => {
         fetch('https://opentdb.com/api.php?amount=5&category=9&type=multiple')
         .then(response => response.json())
@@ -66,6 +68,7 @@ export default function Quiz(props) {
 
     const questionElements = questions.map(question => 
         <Question 
+            answersSeen={answersSeen}
             key={question.id} 
             question={question.question} 
             questionId={question.id}
@@ -76,6 +79,7 @@ export default function Quiz(props) {
     return (
         <main>
             {questionElements}
+            <button onClick={() => setAnswersSeen(true)}className="actionButton">Check answers</button>
         </main>
     )
 }
