@@ -1,9 +1,12 @@
 import React from "react"
 
 export default function Question(props) {
-    console.log(props.answers)
     const answerElements = props.answers.map(answer => 
-        <button className="answerButton">{answer.answer}</button>
+        <button 
+            key={answer.id}
+            onClick={() => props.handleSelect(props.questionId, answer.id)} 
+            className={`answerButton ${answer.selected ? "answerSelected" : ""}`}
+        >{answer.answer}</button>
     )
     return (
         <div>

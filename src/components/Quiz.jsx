@@ -41,12 +41,36 @@ export default function Quiz(props) {
         })
     }, [props.gameStatus])
 
+    function handleSelect(questionId, answerId){
+        setQuestions(prevQuestions => 
+            prevQuestions.map(question => {
+                if(question.id == questionId){
+                    return {
+                        ...question, 
+                        answers: question.answers.map(answer => {
+                                if(answer.id == answerId){
+                                    return {...answer, selected: !answer.selected}
+                                }
+                                else{
+                                    return {...answer, selected: false}
+                                }
+                            })
+                    }
+                }
+                else{
+                    return question
+                }
+            })
+            )
+    }
+
     const questionElements = questions.map(question => 
         <Question 
             key={question.id} 
             question={question.question} 
+            questionId={question.id}
             answers={question.answers}
-
+            handleSelect={handleSelect}
         />
     )
     return (
