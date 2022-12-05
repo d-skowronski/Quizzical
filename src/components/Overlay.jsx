@@ -5,7 +5,7 @@ export default function Overlay(props) {
         <div className="overlay">
             <h1>Quizzical</h1>
             <h2>Your favorite quiz app!</h2>
-            <button onClick={props.handleButton}>Start quiz</button>
+            <button className="actionButton startButton"onClick={props.handleButton}>Start quiz</button>
         </div>
     )
 } 

@@ -6,24 +6,58 @@ body {
     background: #F5F7FB;
 }
 
-button {
-    border: none;
-    font-style: normal;
-    font-weight: 500;
-    color: #F5F7FB;
-    background: #4d5b9e;
-    font-family: 'Inter';
-    border-radius: 1rem;
-    padding: 1rem;
-    font-size: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    cursor: pointer;
-    margin: 1.3rem;
+main {
+    width: 70%;
+    margin: auto;
+    font-size: 1.3rem;
+    margin-top: 40px;
 }
 
-button:hover{
+button {
+    font-style: normal;
+    font-weight: 500;
+    font-family: 'Inter';
+    cursor: pointer;
+    font-size: 0.6em;
+    margin: 0.5em;
+    padding: 0.5em;
+    padding-left: 2em;
+    padding-right: 2em;
+    border-radius: 1em;
+}
+
+.question {
+    font-size: 1em;
+    margin-top: 1em;
+}
+
+.answerButton {
+    background: transparent;
+    border: 0.05em solid #4D5B9E;
+}
+
+.answerButton:hover, .answerSelected {
+    background: #D6DBF5;
+}
+
+
+
+.actionButton {
+    border: none;
+    color: #F5F7FB;
+    background: #4d5b9e;
+}
+
+.actionButton:hover {
     background: rgb(99, 113, 187);
+}
+
+.startButton {
+    font-size: 1rem;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 1rem;
 }
 
 .overlay {
