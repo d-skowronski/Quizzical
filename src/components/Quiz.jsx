@@ -1,6 +1,7 @@
 import React from "react"
 import { useState, useEffect } from "react"
 import Question from "./Question"
+import he from "he"
 
 export default function Quiz(props) {
     const [questions, setQuestions] = useState([])
@@ -13,13 +14,13 @@ export default function Quiz(props) {
                 setQuestions(
                     all_questions.map(question => {
                         const correct_answer = {
-                            answer: question.correct_answer,
+                            answer: he.decode(question.correct_answer),
                             correct: true,
                             selected: false
                         }
                         const answers = question.incorrect_answers.map(answer => (
                             {
-                                answer: answer,
+                                answer: he.decode(answer),
                                 correct: false,
                                 selected: false
                             }
@@ -27,7 +28,7 @@ export default function Quiz(props) {
                         answers.splice(Math.floor(Math.random() * (answers.length + 1)), 0, correct_answer)
 
                         return {
-                            question: question.question,
+                            question: he.decode(question.question),
                             answers: answers
                         }
                     })
