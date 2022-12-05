@@ -41,6 +41,8 @@ export default function Quiz(props) {
         <Question 
             key={question.question} 
             question={question.question} 
+            answers={question.answers}
+
         />
     )
     return (
