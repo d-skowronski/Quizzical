@@ -2,6 +2,7 @@ import React from "react"
 import { useState, useEffect } from "react"
 import Question from "./Question"
 import he from "he"
+import { nanoid } from 'nanoid'
 
 export default function Quiz(props) {
     const [questions, setQuestions] = useState([])
@@ -14,12 +15,14 @@ export default function Quiz(props) {
                 setQuestions(
                     all_questions.map(question => {
                         const correct_answer = {
+                            id: nanoid(),
                             answer: he.decode(question.correct_answer),
                             correct: true,
                             selected: false
                         }
                         const answers = question.incorrect_answers.map(answer => (
                             {
+                                id: nanoid(),
                                 answer: he.decode(answer),
                                 correct: false,
                                 selected: false
@@ -28,6 +31,7 @@ export default function Quiz(props) {
                         answers.splice(Math.floor(Math.random() * (answers.length + 1)), 0, correct_answer)
 
                         return {
+                            id: nanoid(),
                             question: he.decode(question.question),
                             answers: answers
                         }
@@ -39,7 +43,7 @@ export default function Quiz(props) {
 
     const questionElements = questions.map(question => 
         <Question 
-            key={question.question} 
+            key={question.id} 
             question={question.question} 
             answers={question.answers}
 
