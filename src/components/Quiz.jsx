@@ -7,6 +7,7 @@ import { nanoid } from 'nanoid'
 export default function Quiz(props) {
     const [questions, setQuestions] = useState([])
     const [answersSeen, setAnswersSeen] = useState(false)
+    const [correctCount, setCorrectCount] = useState(0)
 
     useEffect(() => {
         fetch('https://opentdb.com/api.php?amount=5&category=9&type=multiple')
@@ -66,6 +67,22 @@ export default function Quiz(props) {
             )
     }
 
+    function endGame() {
+        setAnswersSeen(true)
+        let local_correct_count = 0
+        for(let i = 0; i < questions.length ; i++) {
+            
+            const question = questions[i]
+            for(let j = 0; j < question.answers.length; j++) {
+                const answer = question.answers[j]
+                if(answer.selected && answer.correct){
+                    local_correct_count++
+                }
+            }
+        }
+        setCorrectCount(local_correct_count)
+    }
+
     const questionElements = questions.map(question => 
         <Question 
             answersSeen={answersSeen}
@@ -81,9 +98,9 @@ export default function Quiz(props) {
             {questionElements}
             {answersSeen ? 
                 <button onClick={() => props.setGameStatus(false)}className="actionButton">Play again</button>:
-                <button onClick={() => setAnswersSeen(true)}className="actionButton">Check answers</button>
+                <button onClick={endGame}className="actionButton">Check answers</button>
             }
-            
+            {answersSeen && <div>You scored {correctCount}/{questions.length} correct answers</div>}
         </main>
     )
 }
