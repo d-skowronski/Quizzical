@@ -96,11 +96,20 @@ export default function Quiz(props) {
     return (
         <main>
             {questionElements}
-            {answersSeen ? 
-                <button onClick={() => props.setGameStatus(false)}className="actionButton">Play again</button>:
-                <button onClick={endGame}className="actionButton">Check answers</button>
-            }
-            {answersSeen && <div>You scored {correctCount}/{questions.length} correct answers</div>}
+            <footer>
+                {answersSeen && <div className="score">You scored {correctCount}/{questions.length} correct answers</div>}    
+                {answersSeen ? 
+                    <button 
+                        onClick={() => props.setGameStatus(false)}
+                        className="actionButton"
+                    >Play again</button>:
+                    <button 
+                        onClick={endGame} 
+                        className="actionButton" 
+                        style={{"marginRight": "auto", "marginLeft": "auto"}}
+                    >Check answers</button>
+                }
+            </footer>
         </main>
     )
 }

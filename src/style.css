@@ -4,6 +4,7 @@
 body {
     font-family: 'Karla';
     background: #F5F7FB;
+    color: #293264;
 }
 
 main {
@@ -13,6 +14,16 @@ main {
     margin-top: 40px;
 }
 
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.score {
+    margin-right: 1em;
+}
+
 button {
     font-style: normal;
     font-weight: 500;
@@ -20,7 +31,7 @@ button {
     cursor: pointer;
     font-size: 0.6em;
     margin: 0.5em;
-    padding: 0.5em;
+    padding: 1em;
     padding-left: 2em;
     padding-right: 2em;
     border-radius: 1em;
@@ -32,6 +43,7 @@ button {
 }
 
 .answerButton {
+    padding: 0.5em;
     background: transparent;
     border: 0.05em solid #4D5B9E;
 }
