@@ -79,7 +79,11 @@ export default function Quiz(props) {
     return (
         <main>
             {questionElements}
-            <button onClick={() => setAnswersSeen(true)}className="actionButton">Check answers</button>
+            {answersSeen ? 
+                <button onClick={() => props.setGameStatus(false)}className="actionButton">Play again</button>:
+                <button onClick={() => setAnswersSeen(true)}className="actionButton">Check answers</button>
+            }
+            
         </main>
     )
 }

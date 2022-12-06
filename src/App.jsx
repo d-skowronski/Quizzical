@@ -10,7 +10,7 @@ export default function App() {
     return (
         <div>
             {game ? 
-            <Quiz gameStatus={game}/>
+            <Quiz gameStatus={game} setGameStatus={setGame}/>
             : 
             <Overlay handleButton={() => setGame(true)}/>}
         </div>
