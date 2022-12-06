@@ -12,7 +12,7 @@ export default function App() {
             {game ? 
             <Quiz gameStatus={game}/>
             : 
-            <Overlay handleButton={() => setGame(prevGame => !prevGame)}/>}
+            <Overlay handleButton={() => setGame(true)}/>}
         </div>
     )
 } 
