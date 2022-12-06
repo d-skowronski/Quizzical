@@ -8,7 +8,6 @@ export default function Quiz(props) {
     const [questions, setQuestions] = useState([])
     const [answersSeen, setAnswersSeen] = useState(false)
     const [correctCount, setCorrectCount] = useState(0)
-
     useEffect(() => {
         fetch('https://opentdb.com/api.php?amount=5&category=9&type=multiple')
         .then(response => response.json())
@@ -42,7 +41,7 @@ export default function Quiz(props) {
                 )
             }
         })
-    }, [props.gameStatus])
+    }, [])
 
     function handleSelect(questionId, answerId){
         setQuestions(prevQuestions => 
