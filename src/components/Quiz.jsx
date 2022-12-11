@@ -3,8 +3,11 @@ import { useState, useEffect } from "react"
 import Question from "./Question"
 import he from "he"
 import { nanoid } from 'nanoid'
+import { BarLoader } from "react-spinners"
+
 
 export default function Quiz(props) {
+    const [questionsLoading, setQuestionsLoading] = useState(true)
     const [questions, setQuestions] = useState([])
     const [answersSeen, setAnswersSeen] = useState(false)
     const [correctCount, setCorrectCount] = useState(0)
@@ -41,6 +44,7 @@ export default function Quiz(props) {
                 )
             }
         })
+        .then(() => setQuestionsLoading(false))
     }, [])
 
     function handleSelect(questionId, answerId){
@@ -93,6 +97,16 @@ export default function Quiz(props) {
         />
     )
     return (
+        questionsLoading ?
+            <div className="loader">
+                <BarLoader
+                    loading={questionsLoading}
+                    size={150}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                />
+            </div>
+            :
         <main>
             {questionElements}
             <footer>
